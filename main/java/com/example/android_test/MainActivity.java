@@ -32,7 +32,7 @@ public class MainActivity extends TabActivity {
 
         chrono = (Chronometer)findViewById(R.id.chronometer1);
 
-        for (i = 0; i <= num.length; i++){
+        for (i = 0; i < num.length; i++){
                 btn[i] = findViewById(num[i]);
         }
 
@@ -66,110 +66,140 @@ public class MainActivity extends TabActivity {
 
 
         //1단계
-        for ( i = 0; i <= num.length; i++){
+        for ( i = 0; i < num.length; i++){
+            int index;
+            index = i;
 
+            if (btn[index].isClickable() == true){
+
+                btn[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                                btn[index].setVisibility(View.INVISIBLE);
+
+                                if (btn[index] == btn[0]) {
+                                    chrono.setBase(SystemClock.elapsedRealtime());
+                                    chrono.start();
+                                    chrono.setTextColor(Color.RED);
+                                }
+
+                                if (btn[index] == btn[49]) {
+                                    chrono.stop();
+                                    chrono.setTextColor(Color.BLUE);
+                                }
+
+                                    btn[index + 1].setClickable(true);
+
+                            }
+                });
+                break;
+
+            }
+
+                continue;
         }
 
 
 
 
         //2단계
-//        bBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                chrono2.setBase(SystemClock.elapsedRealtime());
-//                chrono2.start();
-//                chrono2.setTextColor(Color.RED);
-//
-//                btnT.setVisibility(View.VISIBLE);
-//                btnTh.setVisibility(View.VISIBLE);
-//                btnTh.setClickable(false);
-//                bBtn.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnT.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnTh.setClickable(true);
-//                btnT.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnTh.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnFou.setVisibility(View.VISIBLE);
-//                btnFiv.setVisibility(View.VISIBLE);
-//                btnFiv.setClickable(false);
-//                btnTh.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnFou.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnFiv.setClickable(true);
-//                btnFou.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnFiv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnS.setVisibility(View.VISIBLE);
-//                btnSe.setVisibility(View.VISIBLE);
-//                btnSe.setClickable(false);
-//                btnFiv.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnS.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnSe.setClickable(true);
-//                btnS.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnSe.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnE.setVisibility(View.VISIBLE);
-//                btnN.setVisibility(View.VISIBLE);
-//                btnN.setClickable(false);
-//                btnSe.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnE.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnTe.setVisibility(View.VISIBLE);
-//                btnN.setClickable(true);
-//                btnTe.setClickable(false);
-//                btnE.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//
-//        btnN.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                btnN.setVisibility(View.INVISIBLE);
-//                btnTe.setClickable(true);
-//            }
-//        });
-//
-//
-//
-//        btnTe.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                chrono2.stop();
-//                chrono2.setTextColor(Color.BLUE);
-//
-//            }
-//        });
+        bBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chrono2.setBase(SystemClock.elapsedRealtime());
+                chrono2.start();
+                chrono2.setTextColor(Color.RED);
+
+                btnT.setVisibility(View.VISIBLE);
+                btnTh.setVisibility(View.VISIBLE);
+                btnTh.setClickable(false);
+                bBtn.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnTh.setClickable(true);
+                btnT.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnTh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnFou.setVisibility(View.VISIBLE);
+                btnFiv.setVisibility(View.VISIBLE);
+                btnFiv.setClickable(false);
+                btnTh.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnFou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnFiv.setClickable(true);
+                btnFou.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnFiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnS.setVisibility(View.VISIBLE);
+                btnSe.setVisibility(View.VISIBLE);
+                btnSe.setClickable(false);
+                btnFiv.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnSe.setClickable(true);
+                btnS.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnSe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnE.setVisibility(View.VISIBLE);
+                btnN.setVisibility(View.VISIBLE);
+                btnN.setClickable(false);
+                btnSe.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnTe.setVisibility(View.VISIBLE);
+                btnN.setClickable(true);
+                btnTe.setClickable(false);
+                btnE.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        btnN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnN.setVisibility(View.INVISIBLE);
+                btnTe.setClickable(true);
+            }
+        });
+
+
+
+        btnTe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chrono2.stop();
+                chrono2.setTextColor(Color.BLUE);
+
+            }
+        });
 
     }
+
 }
