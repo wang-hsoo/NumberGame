@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class MainActivity extends TabActivity {
 
@@ -66,38 +68,31 @@ public class MainActivity extends TabActivity {
 
 
         //1단계
-        for ( i = 0; i < num.length; i++){
-            int index;
-            index = i;
 
-            if (btn[index].isClickable() == true){
-
-                btn[index].setOnClickListener(new View.OnClickListener() {
+            for (i = 0; i < num.length; i++){
+                btn[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                                btn[index].setVisibility(View.INVISIBLE);
+                        int index = 0;
+                        int chechIndex = index;
 
-                                if (btn[index] == btn[0]) {
-                                    chrono.setBase(SystemClock.elapsedRealtime());
-                                    chrono.start();
-                                    chrono.setTextColor(Color.RED);
-                                }
+                        if (btn[i] == btn[chechIndex]){
+                            btn[i].setVisibility(View.INVISIBLE);
+                            index++;
 
-                                if (btn[index] == btn[49]) {
-                                    chrono.stop();
-                                    chrono.setTextColor(Color.BLUE);
-                                }
-
-                                    btn[index + 1].setClickable(true);
+                        }else{
+                            try {
+                                Toast.makeText(getApplicationContext(), "다시 선택해주세요", Toast.LENGTH_SHORT).show();
+                            }catch (Exception e) {
 
                             }
+                        }
+                    }
                 });
-                break;
-
             }
 
-                continue;
-        }
+
+
 
 
 
