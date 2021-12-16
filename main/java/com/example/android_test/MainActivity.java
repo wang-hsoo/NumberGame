@@ -1,9 +1,14 @@
 package com.example.android_test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.IntentCompat;
 
+import android.app.Activity;
 import android.app.TabActivity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -16,14 +21,14 @@ import android.widget.Toast;
 
 public class MainActivity extends TabActivity {
 
-    Button bBtn, btnTe, btnT, btnTh, btnFou, btnFiv, btnS, btnSe, btnE, btnN;
+    Button bBtn, btnTe, btnT, btnTh, btnFou, btnFiv, btnS, btnSe, btnE, btnN, restart, restart2;
+    Integer[] num =  {R.id.btn1,R.id.btn2, R.id.btn3, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7 ,R.id.btn8, R.id.btn9, R.id.btn10};
+    Button[] btn = new Button[10];
     Chronometer chrono,chrono2;
-    Button[] btn = new Button[50];
-    Integer[] num = {R.id.btn1,R.id.btn2, R.id.btn3, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7 ,R.id.btn8, R.id.btn9, R.id.btn10,
-            R.id.btn11,R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15, R.id.btn16, R.id.btn17 ,R.id.btn18, R.id.btn19, R.id.btn20,
-            R.id.btn21,R.id.btn22, R.id.btn23, R.id.btn24, R.id.btn25, R.id.btn26, R.id.btn27 ,R.id.btn28, R.id.btn29, R.id.btn30,
-            R.id.btn31,R.id.btn32, R.id.btn33, R.id.btn34, R.id.btn35, R.id.btn36, R.id.btn37 ,R.id.btn38, R.id.btn39, R.id.btn40,
-            R.id.btn41,R.id.btn42, R.id.btn43, R.id.btn44, R.id.btn45, R.id.btn46, R.id.btn47 ,R.id.btn48, R.id.btn49, R.id.btn50,};
+
+
+
+
 
     int i;
 
@@ -35,8 +40,9 @@ public class MainActivity extends TabActivity {
         chrono = (Chronometer)findViewById(R.id.chronometer1);
 
         for (i = 0; i < num.length; i++){
-                btn[i] = findViewById(num[i]);
+            btn[i] = findViewById(num[i]);
         }
+
 
 
         bBtn = (Button)findViewById(R.id.bBtn);
@@ -50,6 +56,8 @@ public class MainActivity extends TabActivity {
         btnE = (Button)findViewById(R.id.btnE);
         btnTe = (Button)findViewById(R.id.btnTe);
         chrono2 = (Chronometer)findViewById(R.id.chronometer2);
+        restart = (Button)findViewById(R.id.restart);
+        restart2 = (Button)findViewById(R.id.restart2);
 
         TabHost tabHost = getTabHost();
 
@@ -62,34 +70,132 @@ public class MainActivity extends TabActivity {
         tabSpec2.setContent(R.id.two);
         tabHost.addTab(tabSpec2);
 
-        TabHost.TabSpec tabSpec3 = tabHost.newTabSpec("TAG3").setIndicator("3단계");
-        tabSpec3.setContent(R.id.three);
-        tabHost.addTab(tabSpec3);
 
 
         //1단계
 
-            for (i = 0; i < num.length; i++){
-                btn[i].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int index = 0;
-                        int chechIndex = index;
 
-                        if (btn[i] == btn[chechIndex]){
-                            btn[i].setVisibility(View.INVISIBLE);
-                            index++;
 
-                        }else{
-                            try {
-                                Toast.makeText(getApplicationContext(), "다시 선택해주세요", Toast.LENGTH_SHORT).show();
-                            }catch (Exception e) {
+       btn[0].setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               chrono.setBase(SystemClock.elapsedRealtime());
+               chrono.start();
+               chrono.setTextColor(Color.RED);
 
-                            }
-                        }
-                    }
-                });
+               btn[0].setVisibility(View.INVISIBLE);
+               btn[1].setVisibility(View.VISIBLE);
+           }
+       });
+
+        btn[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[1].setVisibility(View.INVISIBLE);
+                btn[2].setVisibility(View.VISIBLE);
             }
+        });
+
+        btn[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[2].setVisibility(View.INVISIBLE);
+                btn[3].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[3].setVisibility(View.INVISIBLE);
+                btn[4].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[4].setVisibility(View.INVISIBLE);
+                btn[5].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[5].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[5].setVisibility(View.INVISIBLE);
+                btn[6].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[6].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[6].setVisibility(View.INVISIBLE);
+                btn[7].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[7].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[7].setVisibility(View.INVISIBLE);
+                btn[8].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[8].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                btn[8].setVisibility(View.INVISIBLE);
+                btn[9].setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn[9].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chrono.stop();
+                chrono.setTextColor(Color.BLUE);
+
+
+            }
+        });
+
+
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        restart2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -196,5 +302,7 @@ public class MainActivity extends TabActivity {
         });
 
     }
+
+
 
 }
